@@ -1,0 +1,42 @@
+# Online Retail Customer Segmentation & Sales Analysis
+
+## Business Problem
+Understand which customers are most valuable, which are at risk of leaving, and identify sales trends to guide business decisions — using RFM (Recency, Frequency, Monetary) analysis and revenue trend analysis.
+
+## Dataset
+**Online Retail II (UCI)** — 1,067,371 transactions from a UK-based online retailer, Dec 2009 to Dec 2011.
+Source: [Kaggle](https://www.kaggle.com/datasets/mashlyn/online-retail-ii-uci)
+
+## Tools
+Python (pandas, numpy, matplotlib, seaborn, rapidfuzz)
+
+## Process
+1. **Investigation** — profiled the raw data: missing values, duplicates, non-product codes, price/quantity outliers, and description inconsistencies.
+2. **Cleaning** — removed exact duplicates, non-product entries, invalid prices, and matched cancelled order pairs; standardized product names per StockCode using majority vote, validated with fuzzy matching (RapidFuzz).
+3. **RFM Analysis** — scored customers 1-5 on Recency, Frequency, and Monetary; segmented into Champions, At Risk, New, Lost, and Regular.
+4. **Sales Trends** — analyzed revenue over time, top products, sales by country, and order value distribution.
+
+## Key Findings
+- 23.4% of customers generate 80% of revenue (Pareto principle confirmed)
+- 25% of customers are "Lost" — inactive and low spend
+- Revenue peaks Oct-Nov each year (holiday season), drops sharply Jan-Feb
+- Top product (Regency Cakestand) generated £330K, 2x the next best seller
+- ~90%+ of revenue comes from the UK
+
+## Recommendations
+- Prioritize retention for Champions and At Risk segments
+- Run a win-back campaign for Lost customers
+- Plan inventory and marketing around the Oct-Nov peak
+- Treat international markets as a growth opportunity
+
+## Files
+- `retail_analysis.ipynb` — full analysis notebook
+- `rfm_final` — customer-level RFM scores and segments
+- `sales` — cleaned sales transactions (returns excluded)
+- `returns` — cancelled order transactions
+- `images/` — exported charts
+
+## Limitations
+- 34,335 exact duplicate rows removed as an assumption (some may be legitimate repeat scans)
+- 34 product names shared across 2-4 StockCodes, kept as separate products
+- Analysis limited to available fields; no product cost data, so profit margin was not calculated
